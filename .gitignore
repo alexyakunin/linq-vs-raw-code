@@ -1,6 +1,33 @@
-# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
-bin
-obj
+!/packages/
+!/Lib/
 
-# mstest test results
-TestResults
+# Ignore .orig files (original revisions written by Git on merge conflicts)
+*.orig
+
+# Ignore thumbnails created by Windows
+Thumbs.db
+
+# Ignore files built by Visual Studio
+bin/
+obj/
+csx/
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.cache
+*.ilk
+*.log
+*.sbr
+
+# Tools
+_ReSharper*/
+*.resharper
+TestResult*/
+.sass-cache/
