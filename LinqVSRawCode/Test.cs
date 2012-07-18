@@ -336,7 +336,7 @@ namespace LinqVSRawCode
 
             Console.WriteLine(); 
             Console.WriteLine("LINQ only: List.Where().Where():");
-            Measurement.Run(".Where(a && b)", () => {
+            Measurement.Run(".Where(a && b)", true, () => {
                 var src = list;
                 var result = src.Where(i => i < border && (i + 10) < border);
                 foreach (var item in result);

@@ -11,60 +11,60 @@ Output for 20 items:
 Iteration count: 20
 
 Array.Where():
-  For loop:           0,092ns, baseline
-  Foreach loop:       0,250ns, x 2,72
-  Unsafe loop:        0,080ns, x 0,87
-  LINQ:               0,723ns, x 7,86 (WhereArrayIterator`1)
+  For loop:                0,227ns, baseline
+  Foreach loop:            0,100ns, x 0,44
+  Unsafe loop:             0,234ns, x 1,03
+  LINQ:                    0,569ns, x 2,51 (WhereArrayIterator`1)
 
 Array.Where().Select():
-  For loop:           0,269ns, baseline
-  Foreach loop:       0,076ns, x 0,28
-  Unsafe loop:        0,300ns, x 1,12
-  LINQ:               0,935ns, x 3,48 (WhereSelectArrayIterator`2)
+  For loop:                0,157ns, baseline
+  Foreach loop:            0,088ns, x 0,56
+  Unsafe loop:             0,234ns, x 1,49
+  LINQ:                    0,862ns, x 5,49 (WhereSelectArrayIterator`2)
 
 Array.Where().Select().ToList():
-  For loop:           0,727ns, baseline
-  Foreach loop:       0,793ns, x 1,09
-  Unsafe loop:        0,708ns, x 0,97
-  LINQ:               1,736ns, x 2,39 (WhereSelectArrayIterator`2)
+  For loop:                0,704ns, baseline
+  Foreach loop:            0,635ns, x 0,90
+  Unsafe loop:             0,835ns, x 1,19
+  LINQ:                    1,524ns, x 2,16 (WhereSelectArrayIterator`2)
 
 List.Where().Select().ToList():
-  For loop:           0,816ns, baseline
-  Foreach loop:       1,054ns, x 1,29
-  LINQ:               1,905ns, x 2,33 (WhereSelectListIterator`2)
+  For loop:                0,858ns, baseline
+  Foreach loop:            1,027ns, x 1,20
+  LINQ:                    1,678ns, x 1,96 (WhereSelectListIterator`2)
 
 Sequence.Where().Select().ToList():
-  Foreach loop:       1,204ns, baseline
-  LINQ:               1,578ns, x 1,31 (WhereSelectArrayIterator`2)
+  Foreach loop:            1,331ns, baseline
+  LINQ:                    1,158ns, x 0,87 (WhereSelectArrayIterator`2)
 
 Array.Where(HashSet.Contains).Select().ToList():
-  Foreach loop:       1,074ns, baseline
-  LINQ:               1,524ns, x 1,42 (WhereSelectArrayIterator`2)
+  Foreach loop:            1,116ns, baseline
+  LINQ:                    1,624ns, x 1,46 (WhereSelectArrayIterator`2)
 
 Array.Select(StringBuilder.Append(int.ToString)):
-  Foreach loop:       6,163ns, baseline
-  LINQ:               6,894ns, x 1,12 (WhereSelectArrayIterator`2)
+  Foreach loop:            6,247ns, baseline
+  LINQ:                    6,979ns, x 1,12 (WhereSelectArrayIterator`2)
 
 Array.Where(Method).Select(Method).ToList():
-  Foreach loop:       1,085ns, baseline
-  LINQ:               1,951ns, x 1,80 (WhereSelectArrayIterator`2)
+  Foreach loop:            1,285ns, baseline
+  LINQ:                    1,932ns, x 1,50 (WhereSelectArrayIterator`2)
 
 Array.Where(v => Array.Contains(v + 1)).ToList():
-  Nested foreach:     0,138ns, baseline
-  LINQ:               2,136ns, x15,48 (WhereArrayIterator`1)
+  Nested foreach:          0,138ns, baseline
+  LINQ:                    2,090ns, x15,14 (WhereArrayIterator`1)
 
 Array.SelectMany(Array).ToList():
-  Nested foreach:     0,958ns, baseline
-  LINQ:               2,590ns, x 2,70 (<SelectManyIterator>d__14`2)
+  Nested foreach:          0,997ns, baseline
+  LINQ:                    2,902ns, x 2,91 (<SelectManyIterator>d__14`2)
 
 Dictionary.Where().Select():
-  Foreach loop:       0,500ns, baseline
-  LINQ:               1,747ns, x 3,49 (WhereSelectEnumerableIterator`2)
+  Foreach loop:            0,500ns, baseline
+  LINQ:                    1,551ns, x 3,10 (WhereSelectEnumerableIterator`2)
 
 LINQ only: List.Where().Where():
-  .Where(a && b):     0,900ns, x 1,80 (WhereListIterator`1)
-  .Where(a).Where(b): 1,251ns, x 2,50 (WhereListIterator`1)
-  where a where b:    1,339ns, x 2,68 (WhereListIterator`1)
+  .Where(a && b):          0,773ns, baseline (WhereListIterator`1)
+  .Where(a).Where(b):      1,185ns, x 1,53 (WhereListIterator`1)
+  where a where b:         1,266ns, x 1,64 (WhereListIterator`1)
 </pre>
 
 Output for 100 items:
@@ -72,60 +72,60 @@ Output for 100 items:
 Iteration count: 100
 
 Array.Where():
-  For loop:           0,808ns, baseline
-  Foreach loop:       1,208ns, x 1,50
-  Unsafe loop:        0,781ns, x 0,97
-  LINQ:               3,129ns, x 3,87
+  For loop:                1,285ns, baseline
+  Foreach loop:            0,946ns, x 0,74
+  Unsafe loop:             1,235ns, x 0,96
+  LINQ:                    2,898ns, x 2,26
 
 Array.Where().Select():
-  For loop:           0,800ns, baseline
-  Foreach loop:       1,278ns, x 1,60
-  Unsafe loop:        0,800ns, x 1,00
-  LINQ:               3,660ns, x 4,58
+  For loop:                0,858ns, baseline
+  Foreach loop:            1,366ns, x 1,59
+  Unsafe loop:             0,823ns, x 0,96
+  LINQ:                    3,768ns, x 4,39
 
 Array.Where().Select().ToList():
-  For loop:           3,152ns, baseline
-  Foreach loop:       2,906ns, x 0,92
-  Unsafe loop:        2,898ns, x 0,92
-  LINQ:               5,389ns, x 1,71
+  For loop:                3,006ns, baseline
+  Foreach loop:            2,771ns, x 0,92
+  Unsafe loop:             2,602ns, x 0,87
+  LINQ:                    5,408ns, x 1,80
 
 List.Where().Select().ToList():
-  For loop:           3,106ns, baseline
-  Foreach loop:       3,922ns, x 1,26
-  LINQ:               6,555ns, x 2,11
+  For loop:                2,894ns, baseline
+  Foreach loop:            3,903ns, x 1,35
+  LINQ:                    6,890ns, x 2,38
 
 Sequence.Where().Select().ToList():
-  Foreach loop:       4,661ns, baseline
-  LINQ:               5,601ns, x 1,20
+  Foreach loop:            4,842ns, baseline
+  LINQ:                    5,678ns, x 1,17
 
 Array.Where(HashSet.Contains).Select().ToList():
-  Foreach loop:       7,063ns, baseline
-  LINQ:               8,438ns, x 1,19
+  Foreach loop:            7,052ns, baseline
+  LINQ:                    8,253ns, x 1,17
 
 Array.Select(StringBuilder.Append(int.ToString)):
-  Foreach loop:      27,563ns, baseline
-  LINQ:              32,082ns, x 1,16
+  Foreach loop:           30,507ns, baseline
+  LINQ:                   32,967ns, x 1,08
 
 Array.Where(Method).Select(Method).ToList():
-  Foreach loop:       3,776ns, baseline
-  LINQ:               6,140ns, x 1,63
+  Foreach loop:            3,753ns, baseline
+  LINQ:                    6,147ns, x 1,64
 
 Array.Where(v => Array.Contains(v + 1)).ToList():
-  Nested foreach:     0,400ns, baseline
-  LINQ:               2,359ns, x 5,90
+  Nested foreach:          0,504ns, baseline
+  LINQ:                    2,521ns, x 5,00
 
 Array.SelectMany(Array).ToList():
-  Nested foreach:     2,521ns, baseline
-  LINQ:               7,441ns, x 2,95
+  Nested foreach:          2,594ns, baseline
+  LINQ:                    7,298ns, x 2,81
 
 Dictionary.Where().Select():
-  Foreach loop:       2,983ns, baseline
-  LINQ:               5,955ns, x 2,00
+  Foreach loop:            3,191ns, baseline
+  LINQ:                    7,529ns, x 2,36
 
 LINQ only: List.Where().Where():
-  .Where(a && b):     4,596ns, x 1,54
-  .Where(a).Where(b): 5,200ns, x 1,74
-  where a where b:    5,200ns, x 1,74
+  .Where(a && b):          3,849ns, baseline
+  .Where(a).Where(b):      5,431ns, x 1,41
+  where a where b:         5,477ns, x 1,42
 </pre>
 
 Output for 10K items:
@@ -133,60 +133,60 @@ Output for 10K items:
 Iteration count: 10000
 
 Array.Where():
-  For loop:           0,120ms, baseline
-  Foreach loop:       0,118ms, x 0,98
-  Unsafe loop:        0,112ms, x 0,93
-  LINQ:               0,234ms, x 1,94
+  For loop:                0,115ms, baseline
+  Foreach loop:            0,119ms, x 1,03
+  Unsafe loop:            98,900ns, x 0,86
+  LINQ:                    0,283ms, x 2,45
 
 Array.Where().Select():
-  For loop:          96,200ns, baseline
-  Foreach loop:       0,124ms, x 1,29
-  Unsafe loop:        0,112ms, x 1,16
-  LINQ:               0,325ms, x 3,38
+  For loop:                0,110ms, baseline
+  Foreach loop:            0,100ms, x 0,91
+  Unsafe loop:            92,700ns, x 0,84
+  LINQ:                    0,268ms, x 2,43
 
 Array.Where().Select().ToList():
-  For loop:           0,214ms, baseline
-  Foreach loop:       0,211ms, x 0,98
-  Unsafe loop:        0,178ms, x 0,83
-  LINQ:               0,370ms, x 1,73
+  For loop:                0,216ms, baseline
+  Foreach loop:            0,210ms, x 0,97
+  Unsafe loop:             0,187ms, x 0,87
+  LINQ:                    0,437ms, x 2,02
 
 List.Where().Select().ToList():
-  For loop:           0,239ms, baseline
-  Foreach loop:       0,324ms, x 1,35
-  LINQ:               0,433ms, x 1,81
+  For loop:                0,240ms, baseline
+  Foreach loop:            0,323ms, x 1,34
+  LINQ:                    0,434ms, x 1,81
 
 Sequence.Where().Select().ToList():
-  Foreach loop:       0,306ms, baseline
-  LINQ:               0,375ms, x 1,23
+  Foreach loop:            0,360ms, baseline
+  LINQ:                    0,436ms, x 1,21
 
 Array.Where(HashSet.Contains).Select().ToList():
-  Foreach loop:       0,627ms, baseline
-  LINQ:               0,785ms, x 1,25
+  Foreach loop:            0,641ms, baseline
+  LINQ:                    0,965ms, x 1,50
 
 Array.Select(StringBuilder.Append(int.ToString)):
-  Foreach loop:       2,771ms, baseline
-  LINQ:               2,772ms, x 1,00
+  Foreach loop:            2,451ms, baseline
+  LINQ:                    3,117ms, x 1,27
 
 Array.Where(Method).Select(Method).ToList():
-  Foreach loop:       0,266ms, baseline
-  LINQ:               0,410ms, x 1,54
+  Foreach loop:            0,266ms, baseline
+  LINQ:                    0,496ms, x 1,87
 
 Array.Where(v => Array.Contains(v + 1)).ToList():
-  Nested foreach:    15,113ns, baseline
-  LINQ:              25,203ns, x 1,67
+  Nested foreach:         14,485ns, baseline
+  LINQ:                   24,864ns, x 1,72
 
 Array.SelectMany(Array).ToList():
-  Nested foreach:     0,154ms, baseline
-  LINQ:               0,557ms, x 3,62
+  Nested foreach:          0,154ms, baseline
+  LINQ:                    0,461ms, x 2,99
 
 Dictionary.Where().Select():
-  Foreach loop:       0,303ms, baseline
-  LINQ:               0,693ms, x 2,28
+  Foreach loop:            0,306ms, baseline
+  LINQ:                    0,606ms, x 1,98
 
 LINQ only: List.Where().Where():
-  .Where(a && b):     0,311ms, x 1,03
-  .Where(a).Where(b): 0,403ms, x 1,33
-  where a where b:    0,403ms, x 1,33
+  .Where(a && b):          0,390ms, baseline
+  .Where(a).Where(b):      0,444ms, x 1,14
+  where a where b:         0,493ms, x 1,27
 </pre>
 
 Output for 1M items:
@@ -194,60 +194,60 @@ Output for 1M items:
 Iteration count: 1000000
 
 Array.Where():
-  For loop:          12,067ms, baseline
-  Foreach loop:      10,901ms, x 0,90
-  Unsafe loop:       10,319ms, x 0,86
-  LINQ:              28,656ms, x 2,37
+  For loop:               10,489ms, baseline
+  Foreach loop:           10,882ms, x 1,04
+  Unsafe loop:            11,485ms, x 1,09
+  LINQ:                   28,315ms, x 2,70
 
 Array.Where().Select():
-  For loop:          11,494ms, baseline
-  Foreach loop:      12,750ms, x 1,11
-  Unsafe loop:       11,283ms, x 0,98
-  LINQ:              32,210ms, x 2,80
+  For loop:               11,173ms, baseline
+  Foreach loop:           11,928ms, x 1,07
+  Unsafe loop:            10,941ms, x 0,98
+  LINQ:                   32,706ms, x 2,93
 
 Array.Where().Select().ToList():
-  For loop:          22,234ms, baseline
-  Foreach loop:      21,921ms, x 0,99
-  Unsafe loop:       20,007ms, x 0,90
-  LINQ:              45,069ms, x 2,03
+  For loop:               22,545ms, baseline
+  Foreach loop:           20,065ms, x 0,89
+  Unsafe loop:            16,244ms, x 0,72
+  LINQ:                   45,329ms, x 2,01
 
 List.Where().Select().ToList():
-  For loop:          24,754ms, baseline
-  Foreach loop:      33,308ms, x 1,35
-  LINQ:              48,543ms, x 1,96
+  For loop:               22,489ms, baseline
+  Foreach loop:           30,020ms, x 1,33
+  LINQ:                   57,522ms, x 2,56
 
 Sequence.Where().Select().ToList():
-  Foreach loop:      36,849ms, baseline
-  LINQ:              44,502ms, x 1,21
+  Foreach loop:           36,869ms, baseline
+  LINQ:                   41,502ms, x 1,13
 
 Array.Where(HashSet.Contains).Select().ToList():
-  Foreach loop:      69,277ms, baseline
-  LINQ:              85,202ms, x 1,23
+  Foreach loop:           72,732ms, baseline
+  LINQ:                   89,893ms, x 1,24
 
 Array.Select(StringBuilder.Append(int.ToString)):
-  Foreach loop:     200,799ms, baseline
-  LINQ:             183,346ms, x 0,91
+  Foreach loop:          189,645ms, baseline
+  LINQ:                  196,209ms, x 1,03
 
 Array.Where(Method).Select(Method).ToList():
-  Foreach loop:      17,151ms, baseline
-  LINQ:              46,926ms, x 2,74
+  Foreach loop:           16,403ms, baseline
+  LINQ:                   46,315ms, x 2,82
 
 Array.Where(v => Array.Contains(v + 1)).ToList():
-  Nested foreach:     1,178ms, baseline
-  LINQ:               2,158ms, x 1,83
+  Nested foreach:          1,153ms, baseline
+  LINQ:                    2,012ms, x 1,75
 
 Array.SelectMany(Array).ToList():
-  Nested foreach:    16,527ms, baseline
-  LINQ:              52,149ms, x 3,16
+  Nested foreach:         16,510ms, baseline
+  LINQ:                   57,336ms, x 3,47
 
 Dictionary.Where().Select():
-  Foreach loop:      30,881ms, baseline
-  LINQ:              63,435ms, x 2,05
+  Foreach loop:           28,437ms, baseline
+  LINQ:                   62,829ms, x 2,21
 
 LINQ only: List.Where().Where():
-  .Where(a && b):     38,244ms, x 1,24
-  .Where(a).Where(b): 45,296ms, x 1,47
-  where a where b:    49,298ms, x 1,60
+  .Where(a && b):         34,468ms, baseline
+  .Where(a).Where(b):     44,955ms, x 1,30
+  where a where b:        45,942ms, x 1,33
 </pre>
 
 Output for 25M items (100+ MB RAM, so working set doesn't fit into L2):
@@ -255,58 +255,58 @@ Output for 25M items (100+ MB RAM, so working set doesn't fit into L2):
 Iteration count: 25000000
 
 Array.Where():
-  For loop:         182,666ms, baseline
-  Foreach loop:     173,715ms, x 0,95
-  Unsafe loop:      150,063ms, x 0,82
-  LINQ:             294,534ms, x 1,61
+  For loop:              157,113ms, baseline
+  Foreach loop:          161,099ms, x 1,03
+  Unsafe loop:           157,857ms, x 1,00
+  LINQ:                  294,093ms, x 1,87
 
 Array.Where().Select():
-  For loop:         121,073ms, baseline
-  Foreach loop:     129,798ms, x 1,07
-  Unsafe loop:      116,994ms, x 0,97
-  LINQ:             335,846ms, x 2,77
+  For loop:              116,909ms, baseline
+  Foreach loop:          125,255ms, x 1,07
+  Unsafe loop:           113,408ms, x 0,97
+  LINQ:                  338,736ms, x 2,90
 
 Array.Where().Select().ToList():
-  For loop:         247,467ms, baseline
-  Foreach loop:     244,712ms, x 0,99
-  Unsafe loop:      226,315ms, x 0,91
-  LINQ:             476,688ms, x 1,93
+  For loop:              251,818ms, baseline
+  Foreach loop:          245,916ms, x 0,98
+  Unsafe loop:           220,339ms, x 0,87
+  LINQ:                  475,278ms, x 1,89
 
 List.Where().Select().ToList():
-  For loop:         275,324ms, baseline
-  Foreach loop:     362,865ms, x 1,32
-  LINQ:             571,522ms, x 2,08
+  For loop:              331,007ms, baseline
+  Foreach loop:          361,614ms, x 1,09
+  LINQ:                  573,187ms, x 1,73
 
 Sequence.Where().Select().ToList():
-  Foreach loop:     399,250ms, baseline
-  LINQ:             477,763ms, x 1,20
+  Foreach loop:          398,239ms, baseline
+  LINQ:                  475,732ms, x 1,19
 
 Array.Where(HashSet.Contains).Select().ToList():
-  Foreach loop:     811,892ms, baseline
-  LINQ:             995,548ms, x 1,23
+  Foreach loop:          845,070ms, baseline
+  LINQ:                 1016,649ms, x 1,20
 
 Array.Select(StringBuilder.Append(int.ToString)):
-  Foreach loop:    3146,245ms, baseline
-  LINQ:            3482,612ms, x 1,11
+  Foreach loop:         6691,470ms, baseline
+  LINQ:                 7482,744ms, x 1,12
 
 Array.Where(Method).Select(Method).ToList():
-  Foreach loop:     663,216ms, baseline
-  LINQ:            1184,619ms, x 1,79
+  Foreach loop:          661,993ms, baseline
+  LINQ:                 1239,790ms, x 1,87
 
 Array.Where(v => Array.Contains(v + 1)).ToList():
-  Nested foreach:    30,512ms, baseline
-  LINQ:              52,683ms, x 1,73
+  Nested foreach:         30,722ms, baseline
+  LINQ:                   53,114ms, x 1,73
 
 Array.SelectMany(Array).ToList():
-  Nested foreach:   398,517ms, baseline
-  LINQ:            1324,179ms, x 3,32
+  Nested foreach:        397,239ms, baseline
+  LINQ:                 1326,786ms, x 3,34
 
 Dictionary.Where().Select():
-  Foreach loop:     710,682ms, baseline
-  LINQ:            1601,456ms, x 2,25
+  Foreach loop:          710,104ms, baseline
+  LINQ:                 1584,562ms, x 2,23
 
 LINQ only: List.Where().Where():
-  .Where(a && b):      866,343ms, x 1,22
-  .Where(a).Where(b): 1121,336ms, x 1,58
-  where a where b:    1120,927ms, x 1,58
+  .Where(a && b):        866,559ms, baseline
+  .Where(a).Where(b):    642,665ms, x 0,74
+  where a where b:       508,153ms, x 0,59
 </pre>

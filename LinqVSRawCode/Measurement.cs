@@ -31,7 +31,7 @@ namespace LinqVSRawCode
 
         public static void Run(string title, bool isBaseline, int tryCount, Func<object> action)
         {
-            Console.Write("  {0,-15} ", title + ":");
+            Console.Write("  {0,-20} ", title + ":");
             object result = null;
             Stopwatch bestTimer = null;
             
