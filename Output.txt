@@ -1,8 +1,3 @@
-LINQ vs Raw Code
-================
-
-LINQ to Enumerable performance tests.
-
 Output for 20 items:
 <pre>
 Iteration count: 20
@@ -187,3 +182,4 @@ Array.Select(StringBuilder.Append(int.ToString)):
   Foreach loop:     13369,015ms, baseline
   LINQ:             14848,029ms, x 1,11 (WhereSelectArrayIterator`2)
 </pre>
+
