@@ -10,7 +10,7 @@ namespace LinqVSRawCode
     public static class Measurement
     {
         private const int DefaultTryCount = 10;
-        private static Stopwatch baseline;
+        private static double baseline;
 
         public static void Run(string title, Func<object> action)
         {
@@ -32,6 +32,7 @@ namespace LinqVSRawCode
             Console.Write("  {0,-17} ", title + ":");
             object result = null;
             Stopwatch bestTimer = null;
+            
             for (int i = 0; i < tryCount; i++) {
                 for (int j = 0; j < 5; j++) {
                     Thread.Sleep(10);
@@ -45,14 +46,35 @@ namespace LinqVSRawCode
                 if (bestTimer==null || bestTimer.Elapsed > timer.Elapsed)
                     bestTimer = timer;
             }
-            Console.Write("{0,7:F2}ms", bestTimer.Elapsed.TotalMilliseconds);
+            
+            double time = bestTimer.Elapsed.TotalMilliseconds;
+            if (time < 0.05) {
+                // Too short, let's use average instead of min time
+                for (int j = 0; j < 5; j++) {
+                    Thread.Sleep(10);
+                    GC.WaitForPendingFinalizers();
+                    GC.GetTotalMemory(true);
+                }
+                var timer = new Stopwatch();
+                timer.Start();
+                int tryCount2 = tryCount*10;
+                for (int i = tryCount2; i > 0; i--)
+                    result = action.Invoke();
+                timer.Stop();
+                time = timer.Elapsed.TotalMilliseconds / tryCount2;
+            }
+
+            bool timeInMS = time >= 0.1;
+            Console.Write("{0,8:F3}{1}", timeInMS ? time : time * 1000, timeInMS ? "ms" : "ns");
+
             if (isBaseline) {
-                baseline = bestTimer;
+                baseline = time;
                 Console.Write(", baseline");
             }
             else if (baseline!=null)
-                Console.Write(", x{0,5:F2}", (bestTimer.Elapsed.TotalMilliseconds / baseline.Elapsed.TotalMilliseconds));
+                Console.Write(", x{0,5:F2}", time / baseline);
             Console.WriteLine();
+            
             if (result is IEnumerable<int> && !(result is List<int>))
                 Console.WriteLine("    Enumerator:    {0}", (result as IEnumerable<int>).GetEnumerator().GetType().Name);
             else if (result is IEnumerable<string>)
