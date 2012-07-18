@@ -3,7 +3,7 @@ call :run 20 "20 items" true
 call :run 100  "100 items"
 call :run 10000 "10K items"
 call :run 1000000 "1M items"
-call :run 50000000 "50M items (200+ MB RAM, so working set doesn't fit into L2)"
+call :run 25000000 "25M items (100+ MB RAM, so working set doesn't fit into L2)"
 goto :eof
 
 :run

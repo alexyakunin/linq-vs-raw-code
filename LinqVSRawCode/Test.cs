@@ -34,7 +34,7 @@ namespace LinqVSRawCode
                 .ToArray();
             var list = array.ToList();
             var sequence = array.AsEnumerable();
-            var dictionary = new Dictionary<int, int>();
+            var dictionary = new Dictionary<int, int>(array.Length);
             for (int k = 0; k < array.Length; k++)
                 dictionary[k] = array[k];
 
