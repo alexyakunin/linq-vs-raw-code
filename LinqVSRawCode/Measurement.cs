@@ -71,14 +71,14 @@ namespace LinqVSRawCode
                 baseline = time;
                 Console.Write(", baseline");
             }
-            else if (baseline!=null)
+            else
                 Console.Write(", x{0,5:F2}", time / baseline);
-            Console.WriteLine();
             
             if (result is IEnumerable<int> && !(result is List<int>))
-                Console.WriteLine("    Enumerator:    {0}", (result as IEnumerable<int>).GetEnumerator().GetType().Name);
+                Console.Write(" ({0})", (result as IEnumerable<int>).GetEnumerator().GetType().Name);
             else if (result is IEnumerable<string>)
-                Console.WriteLine("    Enumerator:    {0}", (result as IEnumerable<string>).GetEnumerator().GetType().Name);
+                Console.Write(" ({0})", (result as IEnumerable<string>).GetEnumerator().GetType().Name);
+            Console.WriteLine();
         }
     }
 }
