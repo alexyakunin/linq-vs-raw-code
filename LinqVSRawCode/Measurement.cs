@@ -29,7 +29,7 @@ namespace LinqVSRawCode
 
         public static void Run(string title, bool isBaseline, int tryCount, Func<object> action)
         {
-            Console.Write("  {0,-17} ", title + ":");
+            Console.Write("  {0,-15} ", title + ":");
             object result = null;
             Stopwatch bestTimer = null;
             
@@ -65,7 +65,7 @@ namespace LinqVSRawCode
             }
 
             bool timeInMS = time >= 0.1;
-            Console.Write("{0,8:F3}{1}", timeInMS ? time : time * 1000, timeInMS ? "ms" : "ns");
+            Console.Write("{0,9:F3}{1}", timeInMS ? time : time * 1000, timeInMS ? "ms" : "ns");
 
             if (isBaseline) {
                 baseline = time;
