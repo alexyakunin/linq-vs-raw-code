@@ -33,7 +33,7 @@ namespace LinqVSRawCode
                 .Select(i => rnd.Next(max))
                 .ToArray();
             var list = array.ToList();
-            var sequence = array.AsEnumerable();
+            var sequence = new ArrayToSequenceWrapper<int>(array);
             var dictionary = new Dictionary<int, int>(array.Length);
             for (int k = 0; k < array.Length; k++)
                 dictionary[k] = array[k];
