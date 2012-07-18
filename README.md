@@ -1,7 +1,9 @@
-LINQ vs Raw Code
+LINQ to Objects vs raw code benchmark.
 ================
 
-LINQ to Enumerable performance tests.
+A set of tests comparing LINQ to Objects performance vs raw code 
+(the same operations performed by for and foreach loops, as well as 
+loops with unsafe pointers).
 
 Output for 20 items:
 <pre>
