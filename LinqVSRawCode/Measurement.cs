@@ -10,7 +10,9 @@ namespace LinqVSRawCode
     public static class Measurement
     {
         private const int DefaultTryCount = 10;
-        private static double baseline;
+        
+        public static double Baseline = 1;
+        public static bool DisplayEnumeratorType = false;
 
         public static void Run(string title, Func<object> action)
         {
@@ -68,16 +70,18 @@ namespace LinqVSRawCode
             Console.Write("{0,9:F3}{1}", timeInMS ? time : time * 1000, timeInMS ? "ms" : "ns");
 
             if (isBaseline) {
-                baseline = time;
+                Baseline = time;
                 Console.Write(", baseline");
             }
             else
-                Console.Write(", x{0,5:F2}", time / baseline);
+                Console.Write(", x{0,5:F2}", time / Baseline);
             
-            if (result is IEnumerable<int> && !(result is List<int>))
-                Console.Write(" ({0})", (result as IEnumerable<int>).GetEnumerator().GetType().Name);
-            else if (result is IEnumerable<string>)
-                Console.Write(" ({0})", (result as IEnumerable<string>).GetEnumerator().GetType().Name);
+            if (DisplayEnumeratorType) {
+                if (result is IEnumerable<int> && !(result is List<int>))
+                    Console.Write(" ({0})", (result as IEnumerable<int>).GetEnumerator().GetType().Name);
+                else if (result is IEnumerable<string>)
+                    Console.Write(" ({0})", (result as IEnumerable<string>).GetEnumerator().GetType().Name);
+            }
             Console.WriteLine();
         }
     }
