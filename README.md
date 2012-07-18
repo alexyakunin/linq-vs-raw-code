@@ -1,9 +1,10 @@
 LINQ to Objects vs raw code performance
 ================
 
-A set of tests comparing LINQ to Objects performance vs raw code 
-(the same operations performed by for and foreach loops, as well as 
-loops with unsafe pointers).
+A set of tests comparing performance of LINQ to Objects and raw code.
+
+The same computations are performed using LINQ to Objects, for/foreach loops 
+and loops with unsafe pointers (when possible).
 
 Output for 20 items:
 <pre>

@@ -34,6 +34,9 @@ namespace LinqVSRawCode
                 .ToArray();
             var list = array.ToList();
             var sequence = array.AsEnumerable();
+            var dictionary = new Dictionary<int, int>();
+            for (int k = 0; k < array.Length; k++)
+                dictionary[k] = array[k];
 
             // Small set
             var smallArray = array.Distinct().Take(Math.Min(border, iterationCount/10)).ToArray();
@@ -308,6 +311,51 @@ namespace LinqVSRawCode
                 var src = midArray;
                 var result = src.SelectMany(v => smallArray);
                 result.ToList();
+                return result;
+            });
+
+            Console.WriteLine(); 
+            Console.WriteLine("Dictionary.Where().Select():");
+            Measurement.Run("Foreach loop", true, () => {
+                var src = dictionary;
+                int result = 0;
+                foreach (var pair in src)
+                    if (pair.Value < border)
+                        result = pair.Key;
+                return (object) result;
+            });
+            Measurement.Run("LINQ", () => {
+                var src = dictionary;
+                var result = 
+                    from pair in src
+                    where pair.Value < border
+                    select pair.Key;
+                foreach (var item in result);
+                return result;
+            });
+
+            Console.WriteLine(); 
+            Console.WriteLine("LINQ only: List.Where().Where():");
+            Measurement.Run(".Where(a && b)", () => {
+                var src = list;
+                var result = src.Where(i => i < border && (i + 10) < border);
+                foreach (var item in result);
+                return result;
+            });
+            Measurement.Run(".Where(a).Where(b)", () => {
+                var src = list;
+                var result = src.Where(i => i < border).Where(i => (i + 10) < border);
+                foreach (var item in result);
+                return result;
+            });
+            Measurement.Run("where a where b", () => {
+                var src = list;
+                var result = 
+                    from i in src
+                    where i < border 
+                    where (i + 10) < border
+                    select i;
+                foreach (var item in result);
                 return result;
             });
         }
