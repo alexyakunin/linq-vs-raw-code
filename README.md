@@ -1,4 +1,4 @@
-LINQ to Objects vs raw code benchmark.
+LINQ to Objects vs raw code performance
 ================
 
 A set of tests comparing LINQ to Objects performance vs raw code 
